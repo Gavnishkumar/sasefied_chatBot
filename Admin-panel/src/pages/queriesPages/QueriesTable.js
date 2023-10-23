@@ -91,7 +91,7 @@ function OrderTableHead({ order, orderBy, attributes }) {
       },
       {
         id: 'fat',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'Location'
       },
@@ -103,13 +103,13 @@ function OrderTableHead({ order, orderBy, attributes }) {
       },
       {
         id: 'protein',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'Gender'
       },
       {
         id: 'name',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'name'
       }
@@ -130,7 +130,7 @@ function OrderTableHead({ order, orderBy, attributes }) {
       },
       {
         id: 'fat',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'Location'
       },
@@ -142,68 +142,68 @@ function OrderTableHead({ order, orderBy, attributes }) {
       },
       {
         id: 'protein',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'Gender'
       },
       {
         id: 'name',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'Name'
       },
       {
         id: 'anyHarassmenttein',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'AnyHarassment'
       },
       {
         id: 'organization',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'Organization'
       },
 
       {
         id: 'contactNumber',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'ContactNumber'
       },
       {
         id: 'assaulted',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'Assaulted'
       },
       {
         id: 'nameOfAssaulter',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'NameOfAssaulter'
       },
       {
         id: 'reportAnonymously',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'ReportAnonymously'
       },
       {
         id: 'employeeOrStudentId',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'EmployeeOrStudentId'
       },
       {
         id: 'reportToManagement',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'ReportToManagement'
       },
       {
         id: 'locationOfIncident',
-        align: 'right',
+        align: 'left',
         disablePadding: false,
         label: 'LocationOfIncident'
       }
@@ -462,7 +462,7 @@ export default function OrderTable(props) {
               }
             }}
           >
-            <OrderTableHead order={order} orderBy={orderBy} attributes={props.attributes} />
+            <OrderTableHead order={order} align="left" orderBy={orderBy} attributes={props.attributes} />
             <TableBody>
               {stableSort(data, getComparator(order, orderBy)).map((row, index) => {
                 const isItemSelected = isSelected(row.trackingNo);
@@ -487,25 +487,25 @@ export default function OrderTable(props) {
                       </Link>
                     </TableCell>
                     <TableCell align="left">{row.dateOfIncident}</TableCell>
-                    <TableCell align="right">{row.location}</TableCell>
+                    <TableCell align="left">{row.location}</TableCell>
                     <TableCell align="left">
                       <OrderStatus status={row.status} />
                     </TableCell>
-                    <TableCell align="right">{row.gender}</TableCell>
-                    <TableCell align="right">{row.name}</TableCell>
+                    <TableCell align="left">{row.gender}</TableCell>
+                    <TableCell align="left">{row.name}</TableCell>
                     {props.attributes === 5 ? (
                       ''
                     ) : (
                       <>
-                        <TableCell align="right">{row.anyHarassment}</TableCell>
-                        <TableCell align="right">{row.organization}</TableCell>
-                        <TableCell align="right">{row.contactNumber}</TableCell>
-                        <TableCell align="right">{row.assaulted}</TableCell>
-                        <TableCell align="right">{row.nameOfAssaulter}</TableCell>
-                        <TableCell align="right">{row.reportAnonymously}</TableCell>
-                        <TableCell align="right">{row.employeeOrStudentId}</TableCell>
-                        <TableCell align="right">{row.reportToManagement}</TableCell>
-                        <TableCell align="right">{row.locationOfIncident}</TableCell>
+                        <TableCell align="left">{row.anyHarassment}</TableCell>
+                        <TableCell align="left">{row.organization}</TableCell>
+                        <TableCell align="left">{row.contactNumber}</TableCell>
+                        <TableCell align="left">{row.assaulted}</TableCell>
+                        <TableCell align="left">{row.nameOfAssaulter}</TableCell>
+                        <TableCell align="left">{row.reportAnonymously}</TableCell>
+                        <TableCell align="left">{row.employeeOrStudentId}</TableCell>
+                        <TableCell align="left">{row.reportToManagement}</TableCell>
+                        <TableCell align="left">{row.locationOfIncident}</TableCell>
                       </>
                     )}
                   </TableRow>

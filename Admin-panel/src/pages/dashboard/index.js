@@ -12,15 +12,20 @@ import MainCard from 'components/MainCard';
 import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
 import GenderChart from './GenderChart';
 
+
+
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
 const DashboardDefault = () => {
+ 
   const navigate = useNavigate();
   const [slot, setSlot] = useState('week');
   const [totalQueries, setTotalQueries] = useState(0);
   const [resolvedQueries, setResolvedQueries] = useState(0);
   const [unresolvedQueries, setUnResolvedQueries] = useState(0);
   useEffect(() => {
+
+    
     async function fetchData() {
       const jwtTokenData = JSON.parse(localStorage.getItem('authToken'));
       if (!jwtTokenData) navigate('/auth');
@@ -54,9 +59,10 @@ const DashboardDefault = () => {
           <AnalyticEcommerce title="Mr safe safety rating" count="78.5" />
         </Grid>
 
-        <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
+        {/* <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} /> */}
         {/* row 2 */}
-        <Grid item xs={12} md={7} lg={8}>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center', width:'100%',padding:'20px'}}>
+        <Grid style={{padding:'10px',width:'50%'}} item xs={12} md={7} lg={8}>
           <Grid container alignItems="center" justifyContent="space-between">
             <Grid item>
               <Typography variant="h5">Total queries registered</Typography>
@@ -88,28 +94,28 @@ const DashboardDefault = () => {
             </Box>
           </MainCard>
         </Grid>
-        <Grid item xs={12} md={7} lg={8}>
+        <Grid  style={{padding:'10px',width:'50%',margin:'auto'}} item xs={12} md={7} lg={8}>
           <Grid container alignItems="center" justifyContent="space-between">
             <Grid item>
               <Typography variant="h5">Categorise queries by Gender</Typography>
             </Grid>
           </Grid>
-          <GenderChart />
+          <GenderChart width={500}/>
         </Grid>
-
+        </div>
         {/* row 3 */}
-        <Grid item xs={12} md={7} lg={8}>
-          <Grid container alignItems="center" justifyContent="space-between">
-            <Grid item>
+        <Grid  item xs={12} md={12} lg={12}>
+          <Grid container  alignItems="center" justifyContent="space-between">
+            <Grid item >
               <Typography variant="h5">Recent Queries</Typography>
             </Grid>
-            <Grid item />
+            <Grid item 
+            />
           </Grid>
           <MainCard sx={{ mt: 2 }} content={false}>
             <QueryTable limit={5} attributes={5} />
           </MainCard>
         </Grid>
-        <Grid item xs={12} md={5} lg={4}></Grid>
       </Grid>
     </>
   );

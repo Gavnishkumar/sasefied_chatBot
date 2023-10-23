@@ -11,7 +11,7 @@ import AppBarStyled from './AppBarStyled';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { useNavigate } from '../../../../node_modules/react-router-dom/dist/index';
 
-
+import ProfileTab from './HeaderContent/Profile/ProfileTab'
 // ==============================|| MAIN LAYOUT - HEADER ||============================== //
 
 const Header = ({ open, handleDrawerToggle }) => {
@@ -40,7 +40,10 @@ const Header = ({ open, handleDrawerToggle }) => {
       >
         {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
       </IconButton>
+      <div style={{display:'flex'}}>
       <Button variant="contained" onClick={handleLogOut}>LogOut</Button>
+      <ProfileTab/>
+      </div>
       </div>
     </Toolbar>
   );

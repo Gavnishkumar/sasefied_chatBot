@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import axios from "../../../node_modules/axios/index";
 
-const GenderChart = () => {
+const GenderChart = (props) => {
   const [male,setMale]=useState(0);
   const [female,setFemale]=useState(0);
   const [other,setOther]=useState(0);
@@ -33,14 +33,14 @@ const GenderChart = () => {
         }
       ]
   return (
-    <div className="app">
+    <div className="app" >
         <div className="row">
           <div className="mixed-chart">
             <Chart
               options={options}
               series={series}
               type="bar"
-              width="500"
+              width={props.width}
             />
           </div>
         </div>
