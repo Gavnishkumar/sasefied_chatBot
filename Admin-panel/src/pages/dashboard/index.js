@@ -13,7 +13,6 @@ import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
 import GenderChart from './GenderChart';
 
 
-
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
 const DashboardDefault = () => {
@@ -23,9 +22,23 @@ const DashboardDefault = () => {
   const [totalQueries, setTotalQueries] = useState(0);
   const [resolvedQueries, setResolvedQueries] = useState(0);
   const [unresolvedQueries, setUnResolvedQueries] = useState(0);
-  useEffect(() => {
-
+  // ==============================|| responsive using window size ||========================//
+const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+useEffect(() => {
+    // Update screenWidth when the window is resized
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
     
+    return () => {
+      // Remove the resize event listener when the component unmounts
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  const flexdir= screenWidth < 768 ? 'column' : 'row';
+  const widthOfgraph = screenWidth < 768 ? screenWidth*0.92 : screenWidth*0.35;
+  useEffect(() => {
     async function fetchData() {
       const jwtTokenData = JSON.parse(localStorage.getItem('authToken'));
       if (!jwtTokenData) navigate('/auth');
@@ -61,7 +74,7 @@ const DashboardDefault = () => {
 
         {/* <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} /> */}
         {/* row 2 */}
-        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center', width:'100%',padding:'20px'}}>
+        <div style={{display:'flex',flexDirection:`${flexdir}`,justifyContent:'space-between',alignItems:'center', width:'100%',padding:'20px'}}>
         <Grid style={{padding:'10px',width:'50%'}} item xs={12} md={7} lg={8}>
           <Grid container alignItems="center" justifyContent="space-between">
             <Grid item>
@@ -90,7 +103,7 @@ const DashboardDefault = () => {
           </Grid>
           <MainCard content={false} sx={{ mt: 1.5 }}>
             <Box sx={{ pt: 1, pr: 2 }}>
-              <IncomeAreaChart slot={slot} />
+              <IncomeAreaChart slot={slot}/>
             </Box>
           </MainCard>
         </Grid>
@@ -100,7 +113,7 @@ const DashboardDefault = () => {
               <Typography variant="h5">Categorise queries by Gender</Typography>
             </Grid>
           </Grid>
-          <GenderChart width={500}/>
+          <GenderChart width={widthOfgraph}/>
         </Grid>
         </div>
         {/* row 3 */}
