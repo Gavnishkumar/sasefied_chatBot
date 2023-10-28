@@ -9,28 +9,33 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import { useNavigate } from '../../../../../../node_modules/react-router-dom/dist/index';
-
+import { useEffect } from 'react';
 
 export default function AccountMenu() {
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('authToken'));
+  useEffect(()=>{
+    if(!user){
+      navigate('/auth')
+  }
+  },[navigate])
+  
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const navigate = useNavigate();
+  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleLogout = () => {
-
     localStorage.removeItem('authToken');
     navigate('/auth');
   };
   const handleClose = () => {
     setAnchorEl(null);
-  }
+  };
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -60,7 +65,7 @@ export default function AccountMenu() {
               width: 32,
               height: 32,
               ml: -0.5,
-              mr: 1,
+              mr: 1
             },
             '&:before': {
               content: '""',
@@ -72,19 +77,19 @@ export default function AccountMenu() {
               height: 10,
               bgcolor: 'background.paper',
               transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
-          },
+              zIndex: 0
+            }
+          }
         }}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <div style={{ padding: '10px' }}>
-          <h4 >{user.name}</h4>
-          <i>{user.email}</i><br />
-          <i>{user.phone}</i>
+          <h4>{user && user.name}</h4>
+          <i>{user && user.email}</i>
+          <br />
+          <i>{user && user.phone}</i>
         </div>
-
 
         <Divider />
         <MenuItem onClick={handleLogout}>

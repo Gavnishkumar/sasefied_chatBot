@@ -118,7 +118,7 @@ const Auth = () => {
         password: password
       };
       axios
-        .post('http://localhost:4000/api/user', data)
+        .post('https://sasefied-backend.onrender.com/api/user', data)
         .then((response) => {
           // Handle the successful response here
           console.log('Response data:', response.data);
@@ -164,7 +164,7 @@ const Auth = () => {
         password: loginPassword
       };
       axios
-        .post('http://localhost:4000/api/user/login', data)
+        .post('https://sasefied-backend.onrender.com/api/user/login', data)
         .then((response) => {
           // Handle the successful response here
           console.log('Response data:', response.data);

@@ -38,25 +38,10 @@
 }
 /* My css */
 .App{
-  background: url('../src/Image/image.jpg');
+  background: url('../src/Image/background.png');
   background-size: cover;
 }
-.chatbot-toggler {
-  position: fixed;
-  bottom: 30px;
-  right: 35px;
-  outline: none;
-  border: none;
-  height: 50px;
-  width: 50px;
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #724ae8;
-  transition: all 0.2s ease;
-}
+
 
 /* given css */
 /* Import Google font - Poppins */
@@ -76,4 +61,7 @@
 } */
 #send-btn:hover{
   opacity: 0.8;
+}
+.cross_chat:hover{
+  color:red;
 }

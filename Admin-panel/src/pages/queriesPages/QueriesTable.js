@@ -10,7 +10,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import { TextareaAutosize } from '../../../node_modules/@mui/material/index';
-
 /////////////////////////////////STYLED COMPONENTS////////////////////////////////////////////
 const blue = {
   400: '#3399FF'
@@ -300,7 +299,7 @@ export default function OrderTable(props) {
     const data = {
       _id: id
     };
-    await fetch('http://127.0.0.1:4000/api/deleteQuery', {
+    await fetch('https://sasefied-backend.onrender.com/api/deleteQuery', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -320,7 +319,7 @@ export default function OrderTable(props) {
       if (!jwtTokenData) navigate('/auth');
       const headers = { Authorization: `Bearer ${jwtTokenData.token}` };
       setToken(jwtTokenData.token);
-      const data = await fetch(`http://127.0.0.1:4000/api/getQuery?limit=${props.limit}`, { headers });
+      const data = await fetch(`https://sasefied-backend.onrender.com/api/getQuery?limit=${props.limit}`, { headers });
       const queriesList = await data.json();
       setData(queriesList);
     }
@@ -367,7 +366,7 @@ export default function OrderTable(props) {
                       _id: id,
                       comment
                     };
-                    const update = await fetch('http://127.0.0.1:4000/api/updateQuery', {
+                    const update = await fetch('https://sasefied-backend.onrender.com/api/updateQuery', {
                       method: 'PATCH',
                       headers: {
                         'Content-Type': 'application/json',
@@ -413,7 +412,7 @@ export default function OrderTable(props) {
                         _id: id,
                         status: 1
                       };
-                      const update = await fetch('http://127.0.0.1:4000/api/updateQuery', {
+                      const update = await fetch('https://sasefied-backend.onrender.com/api/updateQuery', {
                         method: 'PATCH',
                         headers: {
                           'Content-Type': 'application/json',

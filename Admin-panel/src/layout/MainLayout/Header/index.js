@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { AppBar, IconButton, Toolbar, useMediaQuery,Button } from '@mui/material';
+import { AppBar, IconButton, Toolbar, useMediaQuery, Button } from '@mui/material';
 
 // project import
 import AppBarStyled from './AppBarStyled';
@@ -11,7 +11,7 @@ import AppBarStyled from './AppBarStyled';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { useNavigate } from '../../../../node_modules/react-router-dom/dist/index';
 
-import ProfileTab from './HeaderContent/Profile/ProfileTab'
+import ProfileTab from './HeaderContent/Profile/ProfileTab';
 // ==============================|| MAIN LAYOUT - HEADER ||============================== //
 
 const Header = ({ open, handleDrawerToggle }) => {
@@ -19,31 +19,33 @@ const Header = ({ open, handleDrawerToggle }) => {
   const matchDownMD = useMediaQuery(theme.breakpoints.down('lg'));
   const iconBackColor = 'grey.100';
   const iconBackColorOpen = 'grey.200';
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   // logout function
-  const handleLogOut=()=>{
+  const handleLogOut = () => {
     localStorage.removeItem('authToken');
-    navigate('/auth')
-  }
+    navigate('/auth');
+  };
 
   // common header
   const mainHeader = (
     <Toolbar>
-      <div style={{display:"flex",justifyContent:"space-between",alignItems:'center',width:'100%'}}>
-      <IconButton
-        disableRipple
-        aria-label="open drawer"
-        onClick={handleDrawerToggle}
-        edge="start"
-        color="secondary"
-        sx={{ color: 'text.primary', bgcolor: open ? iconBackColorOpen : iconBackColor, ml: { xs: 0, lg: -2 } }}
-      >
-        {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      </IconButton>
-      <div style={{display:'flex'}}>
-      <Button variant="contained" onClick={handleLogOut}>LogOut</Button>
-      <ProfileTab/>
-      </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+        <IconButton
+          disableRipple
+          aria-label="open drawer"
+          onClick={handleDrawerToggle}
+          edge="start"
+          color="secondary"
+          sx={{ color: 'text.primary', bgcolor: open ? iconBackColorOpen : iconBackColor, ml: { xs: 0, lg: -2 } }}
+        >
+          {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </IconButton>
+        <div style={{ display: 'flex' }}>
+          <Button variant="contained" onClick={handleLogOut}>
+            LogOut
+          </Button>
+          <ProfileTab />
+        </div>
       </div>
     </Toolbar>
   );
@@ -68,7 +70,6 @@ const Header = ({ open, handleDrawerToggle }) => {
       ) : (
         <AppBar {...appBar}>{mainHeader}</AppBar>
       )}
-      
     </>
   );
 };

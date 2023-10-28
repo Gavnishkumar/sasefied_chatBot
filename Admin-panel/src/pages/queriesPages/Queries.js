@@ -18,7 +18,7 @@ const Queries = () => {
       }
     }
     fetchToken();
-  }, [tokenData]);
+  }, [tokenData,navigate]);
   return (
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
       {/* row 1 */}
@@ -33,7 +33,7 @@ const Queries = () => {
           <Grid item />
         </Grid>
         <MainCard sx={{ mt: 2 }} content={false}>
-          <OrdersTable />
+          <OrdersTable limit={50} attributes={0} />
         </MainCard>
       </Grid>
       <Grid item xs={12} md={5} lg={4}></Grid>

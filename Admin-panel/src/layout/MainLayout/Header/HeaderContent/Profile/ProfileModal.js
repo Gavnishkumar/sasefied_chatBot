@@ -13,7 +13,7 @@ const style = {
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
-  p: 4,
+  p: 4
 };
 
 export default function BasicModal(props) {
@@ -24,12 +24,7 @@ export default function BasicModal(props) {
   return (
     <div>
       <Button onClick={props.handleOpen}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={props.handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+      <Modal open={open} onClose={props.handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Text in a modal

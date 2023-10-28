@@ -46,10 +46,10 @@ const IncomeAreaChart = ({ slot }) => {
     const fetchWeekData = async () => {
       const jwtTokenData = JSON.parse(localStorage.getItem('authToken'));
       const headers = { Authorization: `Bearer ${jwtTokenData.token}` };
-      const data = await fetch('http://127.0.0.1:4000/api/getQueryWeek', { headers });
+      const data = await fetch('https://sasefied-backend.onrender.com/api/getQueryWeek', { headers });
       const { res, reg } = await data.json();
       if (slot === 'month') {
-        const yearData = await fetch('http://127.0.0.1:4000/api/getQueryYear', { headers });
+        const yearData = await fetch('https://sasefied-backend.onrender.com/api/getQueryYear', { headers });
         const { yearRes, yearReg } = await yearData.json();
         console.log('sree', yearRes);
         setSeries([yearRes, yearReg]);

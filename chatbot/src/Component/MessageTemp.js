@@ -1,39 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import SmsSharpIcon from '@mui/icons-material/SmsSharp';
+import chatbotSenderIcon from '../Image/chatbot_sender_icon.jpeg';
+import typinggif from '../Image/typing.gif';
 const MessageTemp = (props) => {
-  const [msg, setMsg] = useState('');
+  
   // const scrollToBottom=ContextState()
   const [typing, setTyping] = useState(true)
+
   useEffect(() => {
     setTimeout(() => {
       setTyping(false);
-    }, 1000);
-    let currentIndex = 0;
-    if (props.IAmSending === true && typing === false) {
-      const typingInterval = setInterval(() => {
-        if (currentIndex <= props.message.length) {
-          setMsg(props.message.slice(0, currentIndex));
-          currentIndex++;
-        } else {
-          clearInterval(typingInterval);
-        }
-      }, 50);
-      return () => {
-        clearInterval(typingInterval);
-      };
-    }
-  }, [typing]);
-  useEffect(() => {
+    }, 2000);
     props.scrollableRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [msg]);
+  }, [typing]);
 
   return (
     <>
       {typing && props.IAmSending ?
-        <SmsSharpIcon style={{
+        <img src={typinggif}style={{
           display: `${props.IAmSending ? "flex" : "none"}`,
-          width: '30px',
-          height: '30px',
+          width: '70px',
+          height: '50px',
           color: '#fff',
           cursor: 'default',
           textAlign: 'center',
@@ -49,7 +36,7 @@ const MessageTemp = (props) => {
           justifyContent: `${props.IAmSending ? "flex-start" : "flex-end"}`
         }}>
           <div style={{ display: 'flex', width: '70%', justifyContent: `${props.IAmSending ? "flex-start" : "flex-end"}` }}>
-            <span className="material-symbols-outlined" style={{
+            <img src={chatbotSenderIcon} style={{
               display: `${props.IAmSending ? "flex" : "none"}`,
               width: '40px',
               height: '40px',
@@ -62,13 +49,13 @@ const MessageTemp = (props) => {
               borderRadius: '4px',
               fontSize: '2em',
               margin: '0px 0px 0px 20px',
-            }}>smart_toy</span>
+            }}/>
             {<p style={{
               background: `${props.IAmSending ? '#ccc' : '#724ae8'}`, color: `${props.IAmSending ? 'black' : 'white'}`, margin: '20px 10px 0px',
               padding: '10px 10px 5px',
               borderRadius: '10px 10px 10px 0px',
               textAlign: 'left',
-            }}>{props.IAmSending ? msg : props.message}</p>}
+            }}>{props.message}</p>}
           </div>
         </div>}
     </>
